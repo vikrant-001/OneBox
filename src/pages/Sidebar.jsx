@@ -10,6 +10,9 @@ import { useState } from 'react';
 import Mail from '../modals/Mail';
 const Sidebar = () => {
   const [showMail,setShow] = useState(false);
+  const logoutHandler = () => {
+    localStorage.removeItem('token');
+  }
   return (
     <Box display='flex'
         flexDir='column'
@@ -36,7 +39,7 @@ const Sidebar = () => {
             <MdStackedBarChart/>
         </Box>
         <Box padding='0.3rem'
-              marginLeft='0.5rem'>User</Box>
+              marginLeft='0.5rem' onClick={logoutHandler}>Logout</Box>
         {showMail && <Mail show = {showMail}/>}
     </Box>
   )
