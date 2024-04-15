@@ -3,7 +3,9 @@ import {Link} from "react-router-dom";
 import { Button} from '@chakra-ui/react'
 const Login = () => {
   return (
-    <Box width="27%" 
+    <Box width="27%"
+      // marginLeft='35%'
+      // marginTop='18%'
       display='flex'
       flexDirection='column'
       alignItems="center"

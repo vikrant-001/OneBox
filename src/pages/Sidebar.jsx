@@ -1,4 +1,4 @@
-import {Box} from '@chakra-ui/react'
+import {Box,Button} from '@chakra-ui/react'
 import { FaHome } from "react-icons/fa";
 import { IoMdPersonAdd } from "react-icons/io";
 import { IoMailOutline } from "react-icons/io5";
@@ -6,12 +6,14 @@ import { FiSend } from "react-icons/fi";
 import { CiViewList } from "react-icons/ci";
 import { LuMailOpen } from "react-icons/lu";
 import { MdStackedBarChart } from "react-icons/md";
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import Mail from '../modals/Mail';
+import AuthContext from '../auth/AuthContext';
 const Sidebar = () => {
+  const authctx = useContext(AuthContext);
   const [showMail,setShow] = useState(false);
   const logoutHandler = () => {
-    localStorage.removeItem('token');
+    authctx.userLogin();
   }
   return (
     <Box display='flex'
@@ -38,8 +40,8 @@ const Sidebar = () => {
             <Box onClick={() => setShow(!showMail)}><LuMailOpen /></Box>
             <MdStackedBarChart/>
         </Box>
-        <Box padding='0.3rem'
-              marginLeft='0.5rem' onClick={logoutHandler}>Logout</Box>
+        <Button padding='0.3rem'
+            onClick={logoutHandler}>Logout</Button>
         {showMail && <Mail show = {showMail}/>}
     </Box>
   )
